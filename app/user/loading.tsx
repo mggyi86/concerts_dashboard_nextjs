@@ -1,8 +1,8 @@
 import { Skeleton } from "antd";
 import React from "react";
 
-const loading = () => {
+const Loading = () => {
   return <Skeleton />;
 };
 
-export default loading;
+export default Loading;

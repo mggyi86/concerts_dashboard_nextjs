@@ -60,3 +60,45 @@ export const getConcerts = async () => {
 
   throw new Error(response.statusText);
 };
+
+export const reserveConcert = async (concertId : string, userToken: string) => {
+  const apiURI = new URL(
+    `${process.env.API_HOST}/reservations/reserve/${concertId}`
+  );
+
+  let response = await fetch(apiURI, {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${userToken}`
+    },
+    method: "POST",
+  });
+
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error(response.statusText);
+
+};
+
+export const cancelConcert = async (concertId : string, userToken: string) => {
+  const apiURI = new URL(
+    `${process.env.API_HOST}/reservations/cancel/${concertId}`
+  );
+
+  let response = await fetch(apiURI, {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${userToken}`
+    },
+    method: "POST",
+  });
+
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error(response.statusText);
+
+};

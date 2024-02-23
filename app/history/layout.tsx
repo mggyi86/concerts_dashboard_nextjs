@@ -2,7 +2,7 @@
 import React from "react";
 import { Content } from "antd/es/layout/layout";
 
-const layout = ({
+const Layout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -14,4 +14,4 @@ const layout = ({
   );
 };
 
-export default layout;
+export default Layout;

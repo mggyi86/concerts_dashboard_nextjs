@@ -42,3 +42,24 @@ export const loginAdmin = async () => {
 
   throw new Error(response.statusText);
 };
+
+export const getProfile = async (userToken: string) => {
+  console.log(userToken, "userToken");
+  const apiURI = new URL(
+    `${process.env.API_HOST}/auth/profile`
+  );
+
+  let response = await fetch(apiURI, {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${userToken}`
+    },
+  });
+
+  if (response.ok) {
+    return response.json();
+  }
+  throw new Error(response.statusText);
+
+};

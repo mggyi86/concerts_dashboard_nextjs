@@ -17,7 +17,6 @@ const ConcertList = ({
   fetchConcerts: () => Promise<void>;
 }) => {
   const [messageApi, contextHolder] = message.useMessage();
-  // const [concerts, setConcerts] = useState<any[]>([]);
 
   const onDelete = async (concertId: string) => {
     try {
@@ -25,11 +24,9 @@ const ConcertList = ({
       const deteledItem = await deleteConcert(concertId, adminToken);
       messageApi.open({
         type: "success",
-        content: "Create Successfully",
+        content: "Successfully Delete",
       });
       if (deteledItem.id) {
-        // const concerts = await getConcerts();
-        // setConcerts(concerts);
         fetchConcerts();
       }
     } catch (error) {
@@ -56,19 +53,6 @@ const ConcertList = ({
       },
     });
   };
-
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     (async () => {
-  //       try {
-  //         const concerts = await getConcerts();
-  //         setConcerts(concerts);
-  //       } catch {
-  //         console.log("Fail to fatch!");
-  //       }
-  //     })();
-  //   }
-  // }, []);
 
   return (
     <Space direction="vertical" size="middle" style={{ display: "flex" }}>
