@@ -20,6 +20,20 @@ body {
 }
 
 
+.ant-card-head-title {
+  font-size: 24px;
+  font-family: Roboto;
+  line-height: 32px;
+  font-weight: 600;
+  color: #1692EC;
+}
+
+.ant-card-body p {
+  font-family: Roboto;
+  font-size: 18px;
+}
+
+
 /* Mobile */
 @media (max-width: 992px) {
   .menu_logout {

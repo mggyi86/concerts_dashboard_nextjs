@@ -20,13 +20,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const concerts = await getConcerts();
   return (
     <html lang="en">
       <body className={roboto.className} suppressHydrationWarning={true}>
         <AntdRegistry>
           <Layout>
-            <SiderComponent concerts={concerts} />
+            <SiderComponent />
             <Layout>
               <HeaderComponent />
               {children}
