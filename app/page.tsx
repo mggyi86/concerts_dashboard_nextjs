@@ -1,95 +1,57 @@
-import Image from "next/image";
+"use client";
+import { Card, Col, Flex, Layout, Row } from "antd";
+import {
+  UserOutlined,
+  CloseCircleOutlined,
+  InsertRowBelowOutlined,
+} from "@ant-design/icons";
 import styles from "./page.module.css";
 
+const { Content } = Layout;
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Content id="home">
+      <Row gutter={[16, 24]} className={styles.center} wrap>
+        <Col xs={24} sm={18} md={12} lg={8}>
+          <Card
+            bordered={false}
+            style={{ background: "#0070A4" }}
+            className={styles.card}
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <Flex gap="small" justify="center" align="center" vertical>
+              <UserOutlined style={{ fontSize: "40px" }} />
+              <span className={styles.name}>Total of seats</span>
+              <span className={styles.count}>500</span>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={24} sm={18} md={12} lg={8}>
+          <Card
+            bordered={false}
+            style={{ background: "#00A58B" }}
+            className={styles.card}
+          >
+            <Flex gap="small" justify="center" align="center" vertical>
+              <InsertRowBelowOutlined style={{ fontSize: "40px" }} />
+              <span className={styles.name}>Reserve</span>
+              <span className={styles.count}>120</span>
+            </Flex>
+          </Card>
+        </Col>
+        <Col xs={24} sm={18} md={12} lg={8}>
+          <Card
+            bordered={false}
+            style={{ background: "#E84E4E" }}
+            className={styles.card}
+          >
+            <Flex gap="small" justify="center" align="center" vertical>
+              <CloseCircleOutlined style={{ fontSize: "40px" }} />
+              <span className={styles.name}>Cancel</span>
+              <span className={styles.count}>12</span>
+            </Flex>
+          </Card>
+        </Col>
+      </Row>
+    </Content>
   );
 }
