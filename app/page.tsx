@@ -1,32 +1,48 @@
-import Boards from "@/lib/Components/Boards";
-import { Button, Card, Flex, Layout, Space, Tabs } from "antd";
-import styles from "./page.module.css";
-import type { TabsProps } from "antd";
-import {
-  UserOutlined,
-  CloseCircleOutlined,
-  InsertRowBelowOutlined,
-  DeleteOutlined,
-} from "@ant-design/icons";
-import ConcertList from "@/lib/Components/ConcertList";
-import { Content } from "antd/es/layout/layout";
+"use client";
 import { getConcerts } from "@/controller/concerts";
+import Boards from "@/lib/Components/Boards";
+import ConcertList from "@/lib/Components/ConcertList";
+import CreateConcert from "@/lib/Components/CreateConcert";
+import type { TabsProps } from "antd";
+import { Tabs } from "antd";
+import { Content } from "antd/es/layout/layout";
+import { useEffect, useState } from "react";
+import styles from "./page.module.css";
 
-export default async function Home() {
-  const concerts = await getConcerts();
+export default function Home() {
+  const [concerts, setConcerts] = useState<any[]>([]);
+
+  const fetchConcerts = async () => {
+    try {
+      const concerts = await getConcerts();
+      setConcerts(concerts);
+    } catch {
+      console.log("Fail to fatch!");
+    }
+  };
 
   const items: TabsProps["items"] = [
     {
       key: "overview",
       label: "Overview",
-      children: <ConcertList concerts={concerts} />,
+      forceRender: true,
+      children: (
+        <ConcertList concerts={concerts} fetchConcerts={fetchConcerts} />
+      ),
     },
     {
       key: "create",
       label: "Create",
-      children: "Content of Tab Pane 2",
+      forceRender: true,
+      children: <CreateConcert fetchConcerts={fetchConcerts} />,
     },
   ];
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      fetchConcerts();
+    }
+  }, []);
 
   return (
     <Content id="home">
